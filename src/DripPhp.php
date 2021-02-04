@@ -234,7 +234,7 @@ Class DripPhp implements DripInterface
         $url = $this->api_end_point . $api_action;
 
         // The API wants the params to be JSON encoded
-        $req_params = array('batches' => array('subscribers' => $params));
+        $req_params = array('batches' => array(array('subscribers' => $params)));
 
         $res = $this->makeRequest($url, $req_params, self::POST);
 

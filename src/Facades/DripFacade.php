@@ -11,7 +11,7 @@ use wouterNL\Drip\DripPhp;
  * @method static array|bool getAccounts()
  * @method static bool deleteSubscriber(array $params)
  * @method static array|bool createOrUpdateSubscriber(array $params)
- * @method static array batchCreateOrUpdateSubscribers(array $params)
+ * @method static bool batchCreateOrUpdateSubscribers(array $params)
  * @method static array|bool createOrUpdateOrders(array $params)
  * @method static array|bool fetchSubscriber(array $params)
  * @method static array|bool subscribeSubscriber(array $params)
