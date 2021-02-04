@@ -153,7 +153,7 @@ Class DripPhp implements DripInterface
      * Sends a request to delete a subscriber, either by email or id.
      *
      * @param $params
-     * @return array|bool
+     * @return bool
      * @throws Exception
      */
     public  function deleteSubscriber($params) {
@@ -215,6 +215,30 @@ Class DripPhp implements DripInterface
         : $raw_json['subscribers'][0]);
 
         return $data;
+    }
+
+    /**
+     * Sends a request to add a up to 1000 subscribers and returns true or false
+     *
+     * @param array $params Subscribers
+     * @param bool true or false result batch request
+     */
+    public  function batchCreateOrUpdateSubscribers($params) {
+        $account_id = $this->account_id;
+        if (!empty($params['account_id'])) {
+            $account_id = $params['account_id'];
+            unset($params['account_id']);
+        }
+
+        $api_action = "/$account_id/subscribers/batches";
+        $url = $this->api_end_point . $api_action;
+
+        // The API wants the params to be JSON encoded
+        $req_params = array('batches' => array('subscribers' => $params));
+
+        $res = $this->makeRequest($url, $req_params, self::POST);
+
+        return $res['http_code'] === 201;
     }
 
     /**

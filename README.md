@@ -43,6 +43,7 @@ wouterNL\Drip\DripServiceProvider::class,
 - Drip::getAccounts()
 - Drip::deleteSubscriber($params)
 - Drip::createOrUpdateSubscriber($params)
+- Drip::batchCreateOrUpdateSubscribers($params)
 - Drip::fetchSubscriber($params)
 - Drip::subscribeSubscriber($params)
 - Drip::unsubscribeSubscriber($params)
